@@ -28,26 +28,69 @@ namespace NAI_PROJECT2
             //Znajduje wszystkie przyciski z MainWindow.xaml oprocz Zatwierdz
             Buttons = FindVisualChildren<Button>(this);
             //Tworzenie danych do nauki
-            var training1 = new Training
+           
+            var training0 = new Training
             {
                 Input = new List<double>(new double[] { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 }),
                 Expected = new List<double>(new double[] { 1, 0, 0 })
             };
-            var training2 = new Training
+            var training1 = new Training
             {
                 Input = new List<double>(new double[] { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, }),
                 Expected = new List<double>(new double[] { 0, 1, 0 })
             };
-            var training3 = new Training
+            var training2 = new Training
             {
                 Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 }),
                 Expected = new List<double>(new double[] { 0, 0, 1 })
             };
+            var training3 = new Training
+            {
+                Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0 }),
+                Expected = new List<double>(new double[] { 1, 0, 0 })
+            };
+            var training4 = new Training
+            {
+                Input = new List<double>(new double[] { 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, }),
+                Expected = new List<double>(new double[] { 0, 1, 0 })
+            };
+            var training5 = new Training
+            {
+                Input = new List<double>(new double[] { 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0 }),
+                Expected = new List<double>(new double[] { 0, 0, 1 })
+            };
+            var training6 = new Training
+            {
+                Input = new List<double>(new double[] { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 }),
+                Expected = new List<double>(new double[] { 1, 0, 0 })
+            };
+            var training7 = new Training
+            {
+                Input = new List<double>(new double[] { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, }),
+                Expected = new List<double>(new double[] { 0, 1, 0 })
+            };
+            var training8 = new Training
+            {
+                Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 }),
+                Expected = new List<double>(new double[] { 0, 0, 1 })
+            };
+            var training9 = new Training
+            {
+                Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 }),
+                Expected = new List<double>(new double[] { 0, 0, 1 })
+            };
+
             var trainingSet = new List<Training>
             {
                 training1,
                 training2,
-                training3
+                training3,
+                training4,
+                training5,
+                training6,
+                training7,
+                training8,
+                training9
             };
             //Tworzymy nową sieć z 3 Neuronami listą  z danymi treningowymi oraz zmienną uczącą Alpha o wartości 0.5 
             network = new Network(3, trainingSet, 0.5);
