@@ -7,6 +7,53 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Proszę zaznaczyć liczbę na siatce przycisków" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" 
+               HorizontalAlignment="Center" FontSize="23"/>
+        <Button Name="Btn11" Grid.Row="1" Grid.Column="1"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn12" Grid.Row="1" Grid.Column="2"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn13" Grid.Row="1" Grid.Column="3"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn14" Grid.Row="1" Grid.Column="4"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn21" Grid.Row="2" Grid.Column="1"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn22" Grid.Row="2" Grid.Column="2"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn23" Grid.Row="2" Grid.Column="3"  Click="Button_Click" Background="Gray"/>
+        <Button Name="Btn24" Grid.Row="2" Grid.Column="4"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="3" Grid.Column="1"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="3" Grid.Column="2"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="3" Grid.Column="3"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="3" Grid.Column="4"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="4" Grid.Column="1"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="4" Grid.Column="2"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="4" Grid.Column="3"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="4" Grid.Column="4"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="5" Grid.Column="1"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="5" Grid.Column="2"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="5" Grid.Column="3"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="5" Grid.Column="4"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="6" Grid.Column="1"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="6" Grid.Column="2"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="6" Grid.Column="3"  Click="Button_Click" Background="Gray"/>
+        <Button Grid.Row="6" Grid.Column="4"  Click="Button_Click" Background="Gray"/>
+        <Button Name="SubmitBtn" Content="Zatwierdź" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Click="SubmitBtn_Click"/>
+        <Label Name="ResultLbl" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" Content="Wynik"
+               HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" FontSize="20"/>
     </Grid>
 </Window>
