@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NAI_PROJECT1
+namespace NAI_PROJECT2
 {
     class Training
     {

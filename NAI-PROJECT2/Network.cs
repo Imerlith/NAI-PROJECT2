@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 
-namespace NAI_PROJECT1
+namespace NAI_PROJECT2
 {
     class Network
     {
