@@ -90,9 +90,16 @@ namespace NAI_PROJECT2
             }
             switch (response)
             {
-                case "100": response = "Liczba to : 0"; break;
-                case "010": response = "Liczba to : 1"; break;
-                case "001": response = "Liczba to : 2"; break;
+                case "1000000000": response = "Liczba to : 0"; break;
+                case "0100000000": response = "Liczba to : 1"; break;
+                case "0010000000": response = "Liczba to : 2"; break;
+                case "0001000000": response = "Liczba to : 3"; break;
+                case "0000100000": response = "Liczba to : 4"; break;
+                case "0000010000": response = "Liczba to : 5"; break;
+                case "0000001000": response = "Liczba to : 6"; break;
+                case "0000000100": response = "Liczba to : 7"; break;
+                case "0000000010": response = "Liczba to : 8"; break;
+                case "0000000001": response = "Liczba to : 9"; break;
                 default:response = "Nieznana liczba";break;
             }
             return response;
