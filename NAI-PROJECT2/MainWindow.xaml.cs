@@ -32,56 +32,57 @@ namespace NAI_PROJECT2
             var training0 = new Training
             {
                 Input = new List<double>(new double[] { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 }),
-                Expected = new List<double>(new double[] { 1, 0, 0 })
+                Expected = new List<double>(new double[] { 1, 0, 0, 0,0, 0, 0, 0, 0, 0 })
             };
             var training1 = new Training
             {
                 Input = new List<double>(new double[] { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, }),
-                Expected = new List<double>(new double[] { 0, 1, 0 })
+                Expected = new List<double>(new double[] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 })
             };
             var training2 = new Training
             {
                 Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 }),
-                Expected = new List<double>(new double[] { 0, 0, 1 })
+                Expected = new List<double>(new double[] { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 })
             };
             var training3 = new Training
             {
                 Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0 }),
-                Expected = new List<double>(new double[] { 1, 0, 0 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 })
             };
             var training4 = new Training
             {
                 Input = new List<double>(new double[] { 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, }),
-                Expected = new List<double>(new double[] { 0, 1, 0 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 })
             };
             var training5 = new Training
             {
                 Input = new List<double>(new double[] { 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0 }),
-                Expected = new List<double>(new double[] { 0, 0, 1 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 })
             };
             var training6 = new Training
             {
                 Input = new List<double>(new double[] { 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0 }),
-                Expected = new List<double>(new double[] { 1, 0, 0 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 })
             };
             var training7 = new Training
             {
                 Input = new List<double>(new double[] { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, }),
-                Expected = new List<double>(new double[] { 0, 1, 0 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 })
             };
             var training8 = new Training
             {
                 Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 }),
-                Expected = new List<double>(new double[] { 0, 0, 1 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 })
             };
             var training9 = new Training
             {
                 Input = new List<double>(new double[] { 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1 }),
-                Expected = new List<double>(new double[] { 0, 0, 1 })
+                Expected = new List<double>(new double[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 })
             };
 
             var trainingSet = new List<Training>
             {
+                training0,
                 training1,
                 training2,
                 training3,
