@@ -9,7 +9,8 @@ namespace NAI_PROJECT2
     {
         private List<List<Neuron>> Layers;
         private double Alpha;
-        private List<Training> TrainingSet; 
+        private List<Training> TrainingSet;
+        private static readonly double LAMBDA = 1;
         public Network(int firstLayerSize,int secondLayerSize,List<Training> TrainingSet,double Alpha)
         {
             Layers = new List<List<Neuron>>();
@@ -114,10 +115,10 @@ namespace NAI_PROJECT2
             net += neuron.Bias;
             return Activate(net);
         }
-        //Funkcja aktywacji w tym przypadku jest to liniowa unipolarna 
+        //Funkcja aktywacji w tym przypadku jest to sigmoidalna  unipolarna 
         private double Activate(double net)
         {
-            return net >= 0 ? 1 : 0;
+            return 1 / (1 + Math.Pow(Math.E, -1*net));
         }
         private void CalculateNewWeights(List<double> received, List<double>  expected, List<double> input)
         {
@@ -137,6 +138,30 @@ namespace NAI_PROJECT2
 
             
         }
+        private double Derive(double num)
+        {
+            var norm = Activate(num);
+            return LAMBDA * norm * (1.0 - norm);
+        }
+        private ICollection<double> CalculateLayerOutput(ICollection<Neuron> layer,ICollection<double> input)
+        {
+            var layerOutput = new List<double>();
+            foreach(Neuron neuron in layer)
+            {
+                layerOutput.Add(CalculateOutput(input, neuron));
+            }
+            return layerOutput;
+        }
+        private ICollection<double> CalculateNetworkOutput(ICollection<double> input)
+        {
+            var lastLayerOutput = CalculateLayerOutput(Layers.Last(), input);
+            for (int i = 0; i < Layers.Count; i++)
+            {
+                lastLayerOutput = CalculateLayerOutput(Layers.ElementAt(i),lastLayerOutput);
+            }
+            return lastLayerOutput;
+        }
+       
        
 
 
