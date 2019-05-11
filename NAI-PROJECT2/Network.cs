@@ -7,23 +7,37 @@ namespace NAI_PROJECT2
 {
     class Network
     {
-        private List<Neuron> Neurons;
+        private List<List<Neuron>> Layers;
         private double Alpha;
         private List<Training> TrainingSet; 
-        public Network(int numberOfNeurons,List<Training> TrainingSet,double Alpha)
+        public Network(int firstLayerSize,int secondLayerSize,List<Training> TrainingSet,double Alpha)
         {
-            Neurons = new List<Neuron>();
+            Layers = new List<List<Neuron>>();
             this.Alpha = Alpha;
             this.TrainingSet = TrainingSet;
+
+            var firstLayer = new List<Neuron>();
+            Layers.Add(new List<Neuron>());
             //Dodajemy neurony do sieci
-            for (int i = 0; i < numberOfNeurons; i++)
+            for (int i = 0; i < firstLayerSize; i++)
             {
-                Neurons.Add(new Neuron());
+                firstLayer.Add(new Neuron());
             }
-            //Dla kazdego neuronu ustawiamy losowe wartosci wektora wag
-            foreach (Neuron neuron in Neurons)
+            Layers.Add(firstLayer);
+            var secondLayer = new List<Neuron>();
+            for (int i = 0; i < secondLayerSize; i++)
             {
-                neuron.RadomizeWeights();
+                secondLayer.Add(new Neuron());
+            }
+            Layers.Add(secondLayer);
+            //Dla kazdego neuronu ustawiamy losowe wartosci wektora wag
+            foreach (List<Neuron> layer in Layers)
+            {
+                foreach(Neuron neuron in layer)
+                {
+                    neuron.RadomizeWeights();
+                }
+               
             }
         }
        

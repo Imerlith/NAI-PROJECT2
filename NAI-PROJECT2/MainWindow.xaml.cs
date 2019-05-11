@@ -164,7 +164,7 @@ namespace NAI_PROJECT2
                 training9
             };
             //Tworzymy nową sieć z 3 Neuronami listą  z danymi treningowymi oraz zmienną uczącą Alpha o wartości 0.5 
-            network = new Network(3, trainingSet, 0.5);
+            network = new Network(15,10, trainingSet, 0.5);
             //uczymy sieć na podstawie danych treningowych
             network.StartLearning();
         }
