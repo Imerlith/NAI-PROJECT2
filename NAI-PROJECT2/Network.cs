@@ -194,6 +194,15 @@ namespace NAI_PROJECT2
             }
             return lastLayerOutput;
         }
+        private double CalculateNetworkError(ICollection<double> received, ICollection<double> expected)
+        {
+            var error = 0.0;
+            for (int i = 0; i < expected.Count; i++)
+            {
+                error += Math.Pow(expected.ElementAt(i) - received.ElementAt(i), 2);
+            }
+            return error / 2;
+        }
        
        
 
