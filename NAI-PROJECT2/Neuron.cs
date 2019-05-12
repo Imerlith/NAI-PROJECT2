@@ -8,7 +8,7 @@ namespace NAI_PROJECT2
 {
     class Neuron
     {
-        public IEnumerable<double> Weigths { set; get; }
+        public List<double> Weigths { set; get; }
         public double Bias { set; get; }
        
         public void RadomizeWeights()

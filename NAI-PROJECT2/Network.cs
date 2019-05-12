@@ -54,16 +54,7 @@ namespace NAI_PROJECT2
                 foreach(Training training in TrainingSet)
                 {
                     var output = new List<double>();
-                    foreach(Neuron neuron in Neurons)
-                    {
-                        output.Add(CalculateOutput(training.Input,neuron));
-
-                    }
-                    CalculateNewWeights(output, training.Expected, training.Input);
-                    for (int j = 0; j < training.Expected.Count(); j++)
-                    {
-                        networkError += Math.Pow((training.Expected.ElementAt(j)-output.ElementAt(j)), 2);
-                    }
+                    
                 }
                
                 networkError /= 2;
@@ -83,12 +74,7 @@ namespace NAI_PROJECT2
             string response="";
             Console.WriteLine("TESTOWE");
 
-            foreach(Neuron neuron in Neurons)
-            {
-                var y = CalculateOutput(input, neuron);
-                response += y;
-                Console.WriteLine(y);
-            }
+           
             switch (response)
             {
                 case "1000000000": response = "Liczba to : 0"; break;
@@ -120,23 +106,70 @@ namespace NAI_PROJECT2
         {
             return 1 / (1 + Math.Pow(Math.E, -1*net));
         }
-        private void CalculateNewWeights(List<double> received, List<double>  expected, List<double> input)
+        private void CalculateNewWeights(List<double> received, List<double>  expected, 
+            List<double> input, List<List<double>> allOutputs)
         {
-
-            for (int i = 0; i < Neurons.Count(); i++)
-      
+            var errors = new List<List<double>>();
+            var lastLayerErrors = new List<double>();
+            for (int i = 0; i < Layers.Last().Count; i++)
             {
-                var nWeights = new List<double>();
-                for (int j = 0; j < input.Count(); j++)
+                lastLayerErrors.Add((expected.ElementAt(i) - received.ElementAt(i)) * Derive(received.ElementAt(i)));
+            }
+            errors.Add(lastLayerErrors);
+
+            //pozostałe warstwy
+
+            for (int i = Layers.Count-2; i >=0 ; i--)
+            {
+                var layerError = new List<double>();
+                for (int j = 0; j < Layers.ElementAt(i).Count; j++)
                 {
-                    var oldW = Neurons.ElementAt(i).Weigths.ElementAt(j);
-                    nWeights.Add(oldW +Alpha * (expected.ElementAt(i) - received.ElementAt(i)) * input.ElementAt(j));
+                    double error = 0;
+                    int lastErrorIndex = errors.Count - 1;
+                    for (int k = 0; k < Layers.ElementAt(i+1).Count; k++)
+                    {
+                        error += Layers.ElementAt(i + 1).ElementAt(k).Weigths.ElementAt(j)
+                            * errors.ElementAt(lastErrorIndex - 1).ElementAt(k);
+                    }
+                    error *= Derive(allOutputs.ElementAt(i).ElementAt(j));
+                    layerError.Add(error);
                 }
-                Neurons.ElementAt(i).Weigths = nWeights;
-                Neurons.ElementAt(i).Bias += Alpha * (expected.ElementAt(i) - received.ElementAt(i));
+                errors.Add(layerError);
             }
 
-            
+            errors.Reverse();
+            for (int i = 0; i < Layers.First().Count; i++)
+            {
+                for (int j = 0; j < Layers.First().ElementAt(i).Weigths.Count(); j++)
+                {
+                    var weight = Layers.First().ElementAt(i).Weigths.ElementAt(j);
+                    var nWeight = weight + Alpha * errors.First().ElementAt(i) * input.ElementAt(j);
+                    Layers.First().ElementAt(i).Weigths[j] = nWeight;
+                }
+                var bias = Layers.First().ElementAt(i).Bias;
+                var nBias = bias + Alpha * errors.First().ElementAt(i);
+                Layers.First().ElementAt(i).Bias = nBias;
+            }
+
+
+            //pozostałe warstwy
+
+            for (int i = 1; i < Layers.Count(); i++)
+            {
+                for (int j = 0; j < Layers.ElementAt(i).Count(); j++)
+                {
+                    for (int k = 0; k < Layers.ElementAt(i).ElementAt(j).Weigths.Count(); k++)
+                    {
+                        var weight = Layers.ElementAt(i).ElementAt(j).Weigths.ElementAt(k);
+                        var nWeight = weight + Alpha * errors.ElementAt(i).ElementAt(j) 
+                            * allOutputs.ElementAt(i - 1).ElementAt(k);
+                        Layers.ElementAt(i).ElementAt(j).Weigths[k] = nWeight;
+                    }
+                    var bias = Layers.ElementAt(i).ElementAt(j).Bias;
+                    var nBias = bias + Alpha * errors.ElementAt(i).ElementAt(j);
+                    Layers.ElementAt(i).ElementAt(j).Bias = nBias;
+                }
+            }
         }
         private double Derive(double num)
         {
